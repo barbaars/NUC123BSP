@@ -1,7 +1,7 @@
 /* Linker script to configure memory regions. */
 MEMORY
 {
-  FLASH (rx) : ORIGIN = 0x00000000, LENGTH = 0x10000   /* 128k */
+  FLASH (rx) : ORIGIN = 0x00000000, LENGTH = 0x10000   /* 64k */
   RAM (rwx)  : ORIGIN = 0x20000000, LENGTH = 0x5000    /*  20k */
 }
 
@@ -50,7 +50,8 @@ SECTIONS
 		__Vectors_End = .;
 		__Vectors_Size = __Vectors_End - __Vectors;
 		__end__ = .;
-
+		. = ALIGN(16);
+		KEEP(*(.version))
 		*(.text*)
 
 		KEEP(*(.init))
