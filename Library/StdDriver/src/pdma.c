@@ -158,9 +158,9 @@ void PDMA_SetTransferMode(uint32_t u32Ch, uint32_t u32Peripheral, uint32_t u32Sc
     if(u32Peripheral > PDMA_PWM3_RX) /* Memory-to-Memory */
         pdma->CSR = (pdma->CSR & ~(PDMA_CSR_MODE_SEL_Msk));
     else if(u32Peripheral > PDMA_I2S_TX) /* Peripheral-to-Memory */
-        pdma->CSR = (pdma->CSR & ~(PDMA_CSR_MODE_SEL_Msk) | (0x1 << PDMA_CSR_MODE_SEL_Pos));
+        pdma->CSR = ((pdma->CSR & ~(PDMA_CSR_MODE_SEL_Msk)) | (0x1 << PDMA_CSR_MODE_SEL_Pos));
     else /* Memory-to-Peripheral */
-        pdma->CSR = (pdma->CSR & ~(PDMA_CSR_MODE_SEL_Msk) | (0x2 << PDMA_CSR_MODE_SEL_Pos));
+        pdma->CSR = ((pdma->CSR & ~(PDMA_CSR_MODE_SEL_Msk)) | (0x2 << PDMA_CSR_MODE_SEL_Pos));
 
     switch(u32Peripheral)
     {
