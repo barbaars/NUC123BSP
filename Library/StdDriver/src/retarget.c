@@ -654,6 +654,7 @@ int fputc(int ch, FILE *stream)
 
 #if defined ( __GNUC__ )
 
+#if !defined (STDDRIVER_RETARGET_USER_OVERRIDE)
 #if !defined (OS_USE_SEMIHOSTING)
 int _write (int fd, char *ptr, int len)
 {
@@ -684,7 +685,7 @@ int _read (int fd, char *ptr, int len)
 
 }
 #endif
-
+#endif
 #else
 
 /**
