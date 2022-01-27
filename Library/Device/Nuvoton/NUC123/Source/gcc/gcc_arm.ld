@@ -52,6 +52,8 @@ SECTIONS
 		__end__ = .;
 		. = ALIGN(16);
 		KEEP(*(.version))
+		*(.text.HardFault_Handler)
+		*(.text.Hard_Fault_Handler)
 		*(.text*)
 
 		KEEP(*(.init))
